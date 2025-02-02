@@ -109,7 +109,6 @@ public class Main {
                     int w = sc.nextInt();
 
                     adjacencyList.get(a).add(new int[]{b, w});
-                    adjacencyList.get(b).add(new int[]{a, w});
                     edgeList.add(new Edge(a, b, w));
                 }
             } catch (FileNotFoundException e) {
@@ -119,17 +118,15 @@ public class Main {
 
             // ALGORITHMS
             {
-                System.out.println("\nDijkstra from vertex 7");
-                System.out.println("Distances from vertex 7 to other:\n" +
-                        Arrays.toString(ShortestPaths.dijkstra(adjacencyList, 7)));
-                System.out.println("If the distance is 2147483647(Infinity), it means that we cant reach this vertex from 7");
+                System.out.println("\nDijkstra from vertex 5");
+                System.out.println("Distances from vertex 5 to other:\n" +
+                        Arrays.toString(ShortestPaths.dijkstra(adjacencyList, 5)));
             }
 
             {
-                System.out.println("\nBellman-Ford from vertex 6");
-                System.out.println("Distances from vertex 6 to other:\n" +
-                        Arrays.toString(ShortestPaths.bellmanFord(edgeList, 6, vertex)));
-                System.out.println("If the distance is 2147483647(Infinity), it means that we cant reach this vertex from 6");
+                System.out.println("\nBellman-Ford from vertex 5");
+                System.out.println("Distances from vertex 5 to other:\n" +
+                        Arrays.toString(ShortestPaths.bellmanFord(edgeList, 5, vertex)));
             }
 
             {

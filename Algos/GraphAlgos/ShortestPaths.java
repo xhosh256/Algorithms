@@ -35,14 +35,14 @@ public class ShortestPaths {
         dist[start] = 0;
 
         for (int i = 0; i < vertexCount - 1; ++i) {
+            boolean canRelax = false;
             for (Edge edge : graph) {
                 if (dist[edge.from] != Integer.MAX_VALUE && dist[edge.to] > dist[edge.from] + edge.weight) {
                     dist[edge.to] = dist[edge.from] + edge.weight;
-                }
-                if(dist[edge.to] != Integer.MAX_VALUE && dist[edge.from] > dist[edge.to] + edge.weight) {
-                    dist[edge.from] = dist[edge.to] + edge.weight;
+                    canRelax = true;
                 }
             }
+            if(!canRelax) break;
         }
 
         return dist;
