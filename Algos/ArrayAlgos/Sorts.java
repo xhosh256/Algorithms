@@ -17,6 +17,13 @@ public class Sorts {
             if(!isSwapped) break;
         }
     }
+
+    public static void insertSort() {
+
+    }
+    public static void selectSort() {
+
+    }
     public static void quickSort(int[] nums) {
 
     }

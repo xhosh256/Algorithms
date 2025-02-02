@@ -1,6 +1,6 @@
 import Algos.ArrayAlgos.*;
 import Algos.GraphAlgos.*;
-import utils.Helper;
+import utils.*;
 
 
 import java.io.File;
@@ -9,6 +9,7 @@ import java.util.*;
 
 public class Main {
     private final static String dividingLine = "---------------------------------------------------";
+
     public static void main(String[] args) {
         System.out.println(dividingLine);
         System.out.println("SEARCHES");
@@ -50,6 +51,7 @@ public class Main {
         System.out.println("\nGRAPHS");
         //unweighted
         {
+            //GRAPH READING
             List<List<Integer>> unweightedGraph = new ArrayList<>();
             int vertex, edge;
             try (Scanner sc = new Scanner(new File("utils/unweighted_graph.txt"))) {
@@ -65,9 +67,10 @@ public class Main {
                 }
 
             } catch (FileNotFoundException e) {
-                throw new RuntimeException("File not found");
+                throw new RuntimeException("File not found.");
             }
 
+            // TRAVERSALS
             {
                 System.out.println("\nDFS");
                 System.out.print("vertexes: ");
@@ -89,14 +92,44 @@ public class Main {
 
         //weighted
         {
-            {
-                System.out.println("\nDijkstra");
+            // GRAPH READING
+            List<List<int[]>> adjacencyList = new ArrayList<>();
+            List<Edge> edgeList = new ArrayList<>();
+            int vertex, edge;
+            try (Scanner sc = new Scanner(new File("utils/weighted_graph.txt"))) {
+                vertex = sc.nextInt();
+                edge = sc.nextInt();
 
+                for(int i = 0; i < vertex; ++i) {
+                    adjacencyList.add(new ArrayList<>());
+                }
+
+                for(int i = 0; i < edge; ++i) {
+                    int a = sc.nextInt(), b = sc.nextInt();
+                    int w = sc.nextInt();
+
+                    adjacencyList.get(a).add(new int[]{b, w});
+                    adjacencyList.get(b).add(new int[]{a, w});
+                    edgeList.add(new Edge(a, b, w));
+                }
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException("File not found.");
+            }
+
+
+            // ALGORITHMS
+            {
+                System.out.println("\nDijkstra from vertex 7");
+                System.out.println("Distances from vertex 7 to other:\n" +
+                        Arrays.toString(ShortestPaths.dijkstra(adjacencyList, 7)));
+                System.out.println("If the distance is 2147483647(Infinity), it means that we cant reach this vertex from 7");
             }
 
             {
-                System.out.println("\nBellman-Ford");
-
+                System.out.println("\nBellman-Ford from vertex 6");
+                System.out.println("Distances from vertex 6 to other:\n" +
+                        Arrays.toString(ShortestPaths.bellmanFord(edgeList, 6, vertex)));
+                System.out.println("If the distance is 2147483647(Infinity), it means that we cant reach this vertex from 6");
             }
 
             {
