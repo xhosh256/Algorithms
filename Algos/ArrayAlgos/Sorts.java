@@ -1,4 +1,4 @@
-package ArrayAlgos;
+package Algos.ArrayAlgos;
 
 public class Sorts {
     public static void bubbleSort(int[] nums) {
@@ -18,6 +18,9 @@ public class Sorts {
         }
     }
     public static void quickSort(int[] nums) {
+
+    }
+    public static void mergeSort(int[] nums) {
 
     }
 }

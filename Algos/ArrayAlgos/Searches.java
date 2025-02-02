@@ -1,4 +1,4 @@
-package ArrayAlgos;
+package Algos.ArrayAlgos;
 
 public class Searches {
     public static int linearSearch(int[] nums, int target) {
@@ -44,5 +44,9 @@ public class Searches {
         // Complexity:
         // time: O(log n)
         // space: O(1)
+    }
+
+    public static int ternarySearch() {
+        return -1;
     }
 }
