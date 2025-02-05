@@ -1,7 +1,7 @@
-import Algos.ArrayAlgos.*;
 import Algos.GraphAlgos.*;
+import Algos.ArrayAlgos.*;
+import Algos.TreesAlgos.TreeTraversals;
 import utils.*;
-
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -77,7 +77,7 @@ public class Main {
                 boolean[] visited = new boolean[unweightedGraph.size()];
                 for (int i = 0; i < unweightedGraph.size(); ++i) {
                     if (!visited[i]) {
-                        Traversals.dfs(unweightedGraph, i, visited);
+                        GraphTraversals.dfs(unweightedGraph, i, visited);
                         System.out.print("| ");
                     }
                 }
@@ -86,7 +86,7 @@ public class Main {
             {
                 System.out.println("\b\b\b\n\nBFS");
                 System.out.print("vertexes: ");
-                Traversals.bfs(unweightedGraph, 0);
+                GraphTraversals.bfs(unweightedGraph, 0);
             }
         }
 
@@ -138,7 +138,32 @@ public class Main {
 
         System.out.println("TREES");
         {
+            // BUILD TREES
+            BinaryTree bt = new BinaryTree(new int[]{3, 4, 5, 6, 1, 2, 7});
+            BinaryTree bst = new BinaryTree(new int[]{1, 2, 3, 4, 5, 6, 7});
+            {
 
+            }
+            // TRAVERSALS
+            {
+                System.out.println("\nDFS(BT)");
+                TreeTraversals.DFS(bt);
+
+                System.out.println("\n\nBFS(BT)");
+                TreeTraversals.BFS(bt);
+
+                System.out.println("\nInorder(BST)");
+                TreeTraversals.inOrder(bst);
+
+                System.out.println("\nPreorder(BST)");
+                TreeTraversals.preOrder(bst);
+
+                System.out.println("\nPostorder(BST)");
+                TreeTraversals.postOrder(bst);
+
+            }
+
+            // OTHER
             {
 
             }

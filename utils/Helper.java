@@ -5,7 +5,7 @@ import java.util.Random;
 //this class will store all auxiliary methods
 public class Helper {
     //Arrays
-    public static void shuffle(int[] arr) {
+    public static int[] shuffle(int[] arr) {
         Random random = new Random();
         for (int i = 0; i < arr.length; i++) {
             int j = random.nextInt(arr.length);
@@ -13,6 +13,7 @@ public class Helper {
             arr[i] = arr[j];
             arr[j] = temp;
         }
+        return arr;
     }
 
     public static void merge() {

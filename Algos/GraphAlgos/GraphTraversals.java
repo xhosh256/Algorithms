@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Queue;
 
-public class Traversals {
+public class GraphTraversals {
     public static void dfs(List<List<Integer>> graph, int v, boolean[] visited) {
         System.out.print(v+" ");
         visited[v] = true;
