@@ -118,19 +118,20 @@ public class Main {
 
             // ALGORITHMS
             {
-                System.out.println("\nDijkstra from vertex 5");
-                System.out.println("Distances from vertex 5 to other:\n" +
-                        Arrays.toString(ShortestPaths.dijkstra(adjacencyList, 5)));
+                System.out.println("\nDijkstra from vertex 3");
+                System.out.println("Distances from vertex 3 to other:\n" +
+                        Arrays.toString(ShortestPaths.dijkstra(adjacencyList, 3)));
             }
 
             {
-                System.out.println("\nBellman-Ford from vertex 5");
-                System.out.println("Distances from vertex 5 to other:\n" +
-                        Arrays.toString(ShortestPaths.bellmanFord(edgeList, 5, vertex)));
+                System.out.println("\nBellman-Ford from vertex 3");
+                System.out.println("Distances from vertex 3 to other:\n" +
+                        Arrays.toString(ShortestPaths.bellmanFord(edgeList, 3, vertex)));
             }
 
             {
-                System.out.println("\nFloyd-Warshall");
+                System.out.println("\nFloyd-Warshall\ndist[a][b] is the shortest path from a to b");
+                ShortestPaths.floydWarshall(edgeList, vertex);
 
             }
         }

@@ -1,5 +1,6 @@
 package Algos.GraphAlgos;
 
+import java.lang.reflect.Array;
 import java.util.*;
 import utils.Edge;
 
@@ -46,5 +47,36 @@ public class ShortestPaths {
         }
 
         return dist;
+    }
+
+    public static void floydWarshall(List<Edge> edges, int n) {
+        int[][] dist = new int[n][n];
+        for(int i = 0; i < n; ++i) {
+            Arrays.fill(dist[i], Integer.MAX_VALUE);
+            dist[i][i] = 0;
+        }
+        for(Edge edge: edges) {
+            int src = edge.from;
+            int dst = edge.to;
+            int weight = edge.weight;
+
+            dist[src][dst] = Math.min(dist[src][dst], weight);
+        }
+
+        for(int v = 0; v < n; ++v) {
+            for(int a = 0; a < n; ++a) {
+                for(int b = 0; b < n; ++b) {
+                    if(dist[a][v] != Integer.MAX_VALUE && dist[v][b] != Integer.MAX_VALUE
+                    && dist[a][b] > dist[a][v] + dist[v][b]) {
+                        dist[a][b] = dist[a][v] + dist[v][b];
+                    }
+                }
+            }
+        }
+
+        // dist output
+        for(int i = 0; i < n; ++i) {
+            System.out.println(Arrays.toString(dist[i]));
+        }
     }
 }
